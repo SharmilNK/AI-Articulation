@@ -139,6 +139,9 @@ def generate_digest(scraped_pages: list) -> dict:
         "messages": [{"role": "user", "content": prompt}],
     }
 
+    key_preview = ANTHROPIC_API_KEY[:12] + "..." if ANTHROPIC_API_KEY else "(empty)"
+    logger.info("Using API key starting with: %s", key_preview)
+
     try:
         resp = requests.post(
             ANTHROPIC_API_URL,
@@ -146,9 +149,13 @@ def generate_digest(scraped_pages: list) -> dict:
             json=payload,
             timeout=120,
         )
-        resp.raise_for_status()
     except requests.RequestException as e:
-        raise RuntimeError(f"Anthropic API request failed: {e}") from e
+        raise RuntimeError(f"Anthropic API connection failed: {e}") from e
+
+    if not resp.ok:
+        raise RuntimeError(
+            f"Anthropic API error {resp.status_code}: {resp.text[:500]}"
+        )
 
     raw = resp.json()["content"][0]["text"].strip()
 
