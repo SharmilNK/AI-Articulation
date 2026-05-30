@@ -32,7 +32,7 @@ def _build_prompt(scraped_pages: list, today: str) -> str:
     for page in scraped_pages:
         if not page.content or page.error:
             continue
-        content_block += f"\n\n### SOURCE: {page.source_name} ({page.category})\nURL: {page.url}\n{page.content[:3000]}"
+        content_block += f"\n\n### SOURCE: {page.source_name} ({page.category})\nURL: {page.url}\n{page.content[:1500]}"
 
     return f"""Today is {today}. Below is freshly scraped content from AI/ML newsletters, blogs, and resources.
 
@@ -134,7 +134,7 @@ def generate_digest(scraped_pages: list) -> dict:
     }
     payload = {
         "model": CLAUDE_MODEL,
-        "max_tokens": 8192,
+        "max_tokens": 4096,
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],
     }
@@ -147,7 +147,7 @@ def generate_digest(scraped_pages: list) -> dict:
             ANTHROPIC_API_URL,
             headers=headers,
             json=payload,
-            timeout=120,
+            timeout=300,
         )
     except requests.RequestException as e:
         raise RuntimeError(f"Anthropic API connection failed: {e}") from e
