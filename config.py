@@ -1,0 +1,75 @@
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+GMAIL_USER = os.getenv("GMAIL_USER", "")
+GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
+RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "sharmilkn@gmail.com")
+DIGEST_TIME = os.getenv("DIGEST_TIME", "07:00")
+
+CLAUDE_MODEL = "claude-sonnet-4-6"
+
+SOURCES = [
+    {
+        "url": "https://www.lennysnewsletter.com",
+        "name": "Lenny's Newsletter",
+        "category": "product_ai",
+    },
+    {
+        "url": "https://www.lennysnewsletter.com/archive?sort=top",
+        "name": "Lenny's Newsletter Archive",
+        "category": "product_ai",
+    },
+    {
+        "url": "https://bridge.adiagrawal.com/",
+        "name": "Bridge by Adi Agrawal",
+        "category": "ai_strategy",
+    },
+    {
+        "url": "https://www.conventionalcommits.org/en/v1.0.0/",
+        "name": "Conventional Commits Spec",
+        "category": "dev_standards",
+    },
+    {
+        "url": "https://www.intuitiveautonomy.org/multi-agent-systems",
+        "name": "Intuitive Autonomy — Multi-Agent Systems",
+        "category": "ai_technical",
+    },
+    {
+        "url": "https://www.intuitiveautonomy.org/",
+        "name": "Intuitive Autonomy",
+        "category": "ai_technical",
+    },
+    {
+        "url": "https://enterpriseaiexecutive.ai/",
+        "name": "Enterprise AI Executive",
+        "category": "enterprise_ai",
+    },
+    {
+        "url": "https://www.tomorrowtoolbox.com/courses/imrl",
+        "name": "Tomorrow Toolbox — IMRL Course",
+        "category": "ai_learning",
+    },
+    {
+        "url": "https://maven.com/x/maven-rewind-2025",
+        "name": "Maven Rewind 2025",
+        "category": "ai_trends",
+    },
+    {
+        "url": "https://spillthegptea.substack.com/",
+        "name": "Spill the GPTea",
+        "category": "ai_news",
+    },
+]
+
+CONTENT_SECTIONS = [
+    "conversation_starters",
+    "recent_updates_opinions",
+    "core_concepts",
+    "roadblocks_solutions",
+    "mock_exec_conversation",
+    "mock_ds_conversation",
+    "dev_standards_update",
+]
