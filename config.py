@@ -3,10 +3,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-GMAIL_USER = os.getenv("GMAIL_USER", "")
-GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "")
-RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "sharmilkn@gmail.com")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "").strip()
+GMAIL_USER = os.getenv("GMAIL_USER", "").strip()
+GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "").strip()
+RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "sharmilkn@gmail.com").strip()
 DIGEST_TIME = os.getenv("DIGEST_TIME", "07:00")
 
 CLAUDE_MODEL = "claude-sonnet-4-6"
