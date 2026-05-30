@@ -1,16 +1,20 @@
 """
 Uses Claude API to synthesize scraped content into conversation-ready snippets
 for a non-technical consultant attending AI startup / enterprise conversations.
+
+Uses requests (not the anthropic SDK) for maximum compatibility across environments.
 """
 
 import json
 import logging
 from datetime import date
-import anthropic
+import requests
 from config import ANTHROPIC_API_KEY, CLAUDE_MODEL
 
 logger = logging.getLogger(__name__)
 
+ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages"
+ANTHROPIC_API_VERSION = "2023-06-01"
 
 SYSTEM_PROMPT = """You are an expert AI/ML educator and communication coach.
 Your job is to help a non-technical business consultant articulate AI and ML concepts
@@ -119,20 +123,34 @@ Rules:
 
 def generate_digest(scraped_pages: list) -> dict:
     today = date.today().strftime("%B %d, %Y")
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-
     prompt = _build_prompt(scraped_pages, today)
 
     logger.info("Calling Claude API to synthesize content...")
 
-    response = client.messages.create(
-        model=CLAUDE_MODEL,
-        max_tokens=8192,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    headers = {
+        "x-api-key": ANTHROPIC_API_KEY,
+        "anthropic-version": ANTHROPIC_API_VERSION,
+        "content-type": "application/json",
+    }
+    payload = {
+        "model": CLAUDE_MODEL,
+        "max_tokens": 8192,
+        "system": SYSTEM_PROMPT,
+        "messages": [{"role": "user", "content": prompt}],
+    }
 
-    raw = response.content[0].text.strip()
+    try:
+        resp = requests.post(
+            ANTHROPIC_API_URL,
+            headers=headers,
+            json=payload,
+            timeout=120,
+        )
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        raise RuntimeError(f"Anthropic API request failed: {e}") from e
+
+    raw = resp.json()["content"][0]["text"].strip()
 
     # Strip markdown fences if model wraps output anyway
     if raw.startswith("```"):
