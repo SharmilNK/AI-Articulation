@@ -130,6 +130,22 @@ SOURCES = [
         "name": "Gartner AI Insights",
         "category": "ai_enterprise",
     },
+    # ── AI Maturity & Roadmap (specific free frameworks) ─────────────────────
+    {
+        "url": "https://cloud.google.com/resources/ai-maturity",
+        "name": "Google Cloud AI Maturity Framework",
+        "category": "ai_maturity",
+    },
+    {
+        "url": "https://www.ibm.com/artificial-intelligence/ai-ladder",
+        "name": "IBM AI Ladder",
+        "category": "ai_maturity",
+    },
+    {
+        "url": "https://aws.amazon.com/executive-insights/content/how-to-create-an-ai-strategy/",
+        "name": "AWS AI Strategy & Roadmap Guide",
+        "category": "ai_maturity",
+    },
 ]
 
 CONTENT_SECTIONS = [
