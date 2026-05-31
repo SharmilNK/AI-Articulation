@@ -62,6 +62,11 @@ SOURCES = [
         "name": "Spill the GPTea",
         "category": "ai_news",
     },
+    {
+        "url": "https://www.theunwindai.com/",
+        "name": "The Unwind AI",
+        "category": "ai_news",
+    },
 ]
 
 CONTENT_SECTIONS = [
