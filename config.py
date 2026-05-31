@@ -146,6 +146,32 @@ SOURCES = [
         "name": "AWS AI Strategy & Roadmap Guide",
         "category": "ai_maturity",
     },
+    # ── Executive Advisory, Business Case, Change Management, Adoption ────────
+    {
+        "url": "https://www.deloitte.com/us/en/pages/technology/solutions/ai-institute.html",
+        "name": "Deloitte AI Institute",
+        "category": "ai_executive_advisory",
+    },
+    {
+        "url": "https://www.ibm.com/thought-leadership/institute-business-value/en-us/report/ai-roi",
+        "name": "IBM Institute for Business Value — AI ROI",
+        "category": "ai_business_case",
+    },
+    {
+        "url": "https://www.prosci.com/resources/articles/change-management-for-artificial-intelligence",
+        "name": "Prosci AI Change Management",
+        "category": "ai_change_management",
+    },
+    {
+        "url": "https://cloud.google.com/transform/ai-adoption",
+        "name": "Google Cloud AI Adoption Framework",
+        "category": "ai_enterprise_adoption",
+    },
+    {
+        "url": "https://www.microsoft.com/en-us/ai/ai-transformation",
+        "name": "Microsoft AI Transformation",
+        "category": "ai_enterprise_adoption",
+    },
 ]
 
 CONTENT_SECTIONS = [
@@ -158,4 +184,5 @@ CONTENT_SECTIONS = [
     "dev_standards_update",
     "governance_frameworks",
     "ai_strategy_frameworks",
+    "enterprise_ai_toolkit",
 ]
