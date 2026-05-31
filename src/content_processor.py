@@ -50,7 +50,7 @@ Using the above source material, generate a JSON object with exactly these keys:
       "talking_points": ["point 1", "point 2", "point 3"],
       "source": "Which source this came from"
     }}
-    // 4-5 items
+    // 3 items
   ],
 
   "recent_updates_opinions": [
@@ -60,7 +60,7 @@ Using the above source material, generate a JSON object with exactly these keys:
       "opinion": "A confident, informed take the consultant can share",
       "why_it_matters": "Business or technical impact"
     }}
-    // 4-5 items
+    // 3 items
   ],
 
   "core_concepts": [
@@ -70,7 +70,7 @@ Using the above source material, generate a JSON object with exactly these keys:
       "analogy": "A relatable non-technical analogy",
       "why_relevant_now": "Why this matters in current AI conversations"
     }}
-    // 4-5 items
+    // 3 items
   ],
 
   "roadblocks_solutions": [
@@ -80,7 +80,7 @@ Using the above source material, generate a JSON object with exactly these keys:
       "industry_response": "What practitioners / companies are doing about it",
       "consultant_angle": "How to frame this in a business conversation"
     }}
-    // 3-4 items
+    // 3 items
   ],
 
   "mock_exec_conversation": {{
@@ -134,7 +134,7 @@ def generate_digest(scraped_pages: list) -> dict:
     }
     payload = {
         "model": CLAUDE_MODEL,
-        "max_tokens": 4096,
+        "max_tokens": 7000,
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],
     }
