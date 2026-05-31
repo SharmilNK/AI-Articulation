@@ -99,6 +99,53 @@ SOURCES = [
         "name": "Stanford HAI",
         "category": "ai_strategy_ref",
     },
+    # ── Enterprise AI Adoption (permanent reference) ─────────────────────────
+    {
+        "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights",
+        "name": "McKinsey QuantumBlack AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://hbr.org/topic/subject/ai-and-machine-learning",
+        "name": "Harvard Business Review — AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://www.bcg.com/capabilities/digital-technology-data/artificial-intelligence",
+        "name": "BCG AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://aibusiness.com/",
+        "name": "AI Business",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://www.weforum.org/agenda/artificial-intelligence/",
+        "name": "World Economic Forum — AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://www.gartner.com/en/articles/topic/artificial-intelligence",
+        "name": "Gartner AI Insights",
+        "category": "ai_enterprise",
+    },
+    # ── AI Maturity & Roadmap (specific free frameworks) ─────────────────────
+    {
+        "url": "https://cloud.google.com/resources/ai-maturity",
+        "name": "Google Cloud AI Maturity Framework",
+        "category": "ai_maturity",
+    },
+    {
+        "url": "https://www.ibm.com/artificial-intelligence/ai-ladder",
+        "name": "IBM AI Ladder",
+        "category": "ai_maturity",
+    },
+    {
+        "url": "https://aws.amazon.com/executive-insights/content/how-to-create-an-ai-strategy/",
+        "name": "AWS AI Strategy & Roadmap Guide",
+        "category": "ai_maturity",
+    },
 ]
 
 CONTENT_SECTIONS = [

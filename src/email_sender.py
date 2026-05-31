@@ -49,6 +49,9 @@ def send_digest(doc_path: str) -> bool:
         )
         return False
 
+    # Support comma-separated list of recipients
+    recipients = [r.strip() for r in RECIPIENT_EMAIL.split(",") if r.strip()]
+
     today_str = date.today().strftime("%B %d, %Y")
     subject = f"AI Articulation Digest — {today_str}"
 
@@ -59,11 +62,14 @@ def send_digest(doc_path: str) -> bool:
         "AI Roadblocks & Industry Responses",
         "Mock Conversations: Executive & Data Scientist",
         "GitHub & Dev Standards Update",
+        "AI Governance Frameworks (NIST · Microsoft · Google)",
+        "AI Strategy Frameworks (a16z · MIT Sloan · Stanford HAI)",
+        "Enterprise AI Adoption Toolkit",
     ]
 
     msg = MIMEMultipart("mixed")
     msg["From"] = GMAIL_USER
-    msg["To"] = RECIPIENT_EMAIL
+    msg["To"] = ", ".join(recipients)
     msg["Subject"] = subject
 
     html_body = _build_html_body(today_str, section_titles)
@@ -88,8 +94,8 @@ def send_digest(doc_path: str) -> bool:
             server.ehlo()
             server.starttls()
             server.login(GMAIL_USER, GMAIL_APP_PASSWORD)
-            server.sendmail(GMAIL_USER, RECIPIENT_EMAIL, msg.as_string())
-        logger.info("Digest emailed to %s", RECIPIENT_EMAIL)
+            server.sendmail(GMAIL_USER, recipients, msg.as_string())
+        logger.info("Digest emailed to %d recipient(s): %s", len(recipients), ", ".join(recipients))
         return True
     except smtplib.SMTPAuthenticationError:
         logger.error(
