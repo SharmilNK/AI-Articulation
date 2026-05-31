@@ -110,14 +110,39 @@ Using the above source material, generate a JSON object with exactly these keys:
     "what_it_is": "Plain English explanation",
     "why_ai_startups_care": "Connection to AI workflows, GitHub Copilot, CI/CD, etc.",
     "talking_point": "One smart thing to say about it in a tech conversation"
-  }}
+  }},
+
+  "governance_frameworks": [
+    {{
+      "framework": "Framework name (e.g. NIST AI RMF, Microsoft Responsible AI, Google Responsible AI)",
+      "owner": "Which company / body owns this framework",
+      "core_pillars": ["pillar 1", "pillar 2", "pillar 3"],
+      "one_liner": "What this framework is in one sentence",
+      "how_companies_use_it": "Concrete example of how real tech companies apply this",
+      "consultant_talking_point": "One sharp thing to say when this framework comes up in a meeting"
+    }}
+    // 3 items — one per governance source (Microsoft, Google, NIST)
+  ],
+
+  "ai_strategy_frameworks": [
+    {{
+      "framework": "Strategy framework or approach name",
+      "source": "a16z / MIT Sloan / Stanford HAI",
+      "core_idea": "The central strategic concept in 1-2 sentences",
+      "real_world_application": "How companies are deploying this strategy today",
+      "deployment_checklist": ["step or consideration 1", "step or consideration 2", "step or consideration 3"],
+      "consultant_talking_point": "How to bring this up confidently in a C-suite strategy conversation"
+    }}
+    // 3 items — one per strategy source (a16z, MIT Sloan, Stanford HAI)
+  ]
 }}
 
 Rules:
 - Ground every item in the actual scraped source content above
 - Keep language confident, consultant-appropriate — no filler words
 - Mock conversations must feel realistic, not robotic
-- All content must be from today {today}
+- governance_frameworks and ai_strategy_frameworks are PERMANENT REFERENCE sections — summarise the frameworks themselves (their structure, pillars, how they are used), not just today's news
+- All other sections should reflect today {today}'s latest content
 """
 
 

@@ -67,6 +67,38 @@ SOURCES = [
         "name": "The Unwind AI",
         "category": "ai_news",
     },
+    # ── AI Governance Frameworks (permanent reference) ──────────────────────
+    {
+        "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+        "name": "Microsoft Responsible AI",
+        "category": "ai_governance",
+    },
+    {
+        "url": "https://ai.google/responsibility/responsible-ai-practices/",
+        "name": "Google Responsible AI Practices",
+        "category": "ai_governance",
+    },
+    {
+        "url": "https://airc.nist.gov/home",
+        "name": "NIST AI Risk Management Framework",
+        "category": "ai_governance",
+    },
+    # ── AI Strategy (permanent reference) ───────────────────────────────────
+    {
+        "url": "https://a16z.com/ai/",
+        "name": "a16z AI",
+        "category": "ai_strategy_ref",
+    },
+    {
+        "url": "https://sloanreview.mit.edu/tag/artificial-intelligence/",
+        "name": "MIT Sloan Management Review — AI",
+        "category": "ai_strategy_ref",
+    },
+    {
+        "url": "https://hai.stanford.edu",
+        "name": "Stanford HAI",
+        "category": "ai_strategy_ref",
+    },
 ]
 
 CONTENT_SECTIONS = [
@@ -77,4 +109,6 @@ CONTENT_SECTIONS = [
     "mock_exec_conversation",
     "mock_ds_conversation",
     "dev_standards_update",
+    "governance_frameworks",
+    "ai_strategy_frameworks",
 ]
