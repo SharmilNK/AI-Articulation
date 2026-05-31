@@ -99,6 +99,37 @@ SOURCES = [
         "name": "Stanford HAI",
         "category": "ai_strategy_ref",
     },
+    # ── Enterprise AI Adoption (permanent reference) ─────────────────────────
+    {
+        "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights",
+        "name": "McKinsey QuantumBlack AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://hbr.org/topic/subject/ai-and-machine-learning",
+        "name": "Harvard Business Review — AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://www.bcg.com/capabilities/digital-technology-data/artificial-intelligence",
+        "name": "BCG AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://aibusiness.com/",
+        "name": "AI Business",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://www.weforum.org/agenda/artificial-intelligence/",
+        "name": "World Economic Forum — AI",
+        "category": "ai_enterprise",
+    },
+    {
+        "url": "https://www.gartner.com/en/articles/topic/artificial-intelligence",
+        "name": "Gartner AI Insights",
+        "category": "ai_enterprise",
+    },
 ]
 
 CONTENT_SECTIONS = [

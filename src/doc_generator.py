@@ -312,6 +312,43 @@ def build_document(digest: dict, today_str: str) -> str:
         _add_label(doc, "Say this in a C-suite meeting", item.get("consultant_talking_point", ""))
         doc.add_paragraph()
 
+    # ── Section 9: Enterprise AI Adoption Toolkit ─────────────────────────────
+    _add_h1(doc, "9. Enterprise AI Adoption Toolkit — Permanent Reference")
+    intro9 = doc.add_paragraph(
+        "The frameworks and models your clients need when deploying AI at scale. "
+        "Use these to lead maturity assessments, build business cases, and manage organisational change."
+    )
+    intro9.runs[0].font.size = Pt(10)
+    intro9.runs[0].font.color.rgb = RGBColor(0x60, 0x60, 0x60)
+
+    TOPIC_ICONS = {
+        "AI Maturity Assessment": "Maturity Assessment",
+        "Roadmap Definition": "Roadmap Definition",
+        "Executive Advisory": "Executive Advisory",
+        "Business Case Development": "Business Case Development",
+        "Change Management": "Change Management",
+        "Enterprise AI Adoption": "Enterprise AI Adoption",
+    }
+
+    for item in digest.get("enterprise_ai_toolkit", []):
+        topic = item.get("topic", "")
+        source = item.get("source", "")
+        _add_h2(doc, f"{topic}  [{source}]")
+        _add_label(doc, "Framework / Model", item.get("framework_or_model", ""))
+        _add_label(doc, "What it covers", item.get("description", ""))
+        steps = item.get("key_steps_or_levels", [])
+        if steps:
+            p = doc.add_paragraph()
+            p.paragraph_format.left_indent = Inches(0.3)
+            p.paragraph_format.space_after = Pt(2)
+            p.add_run("Key steps / levels:").bold = True
+            p.runs[0].font.size = Pt(10)
+            for step in steps:
+                _add_bullet(doc, step)
+        _add_label(doc, "How you use this with a client", item.get("how_consultant_uses_it", ""))
+        _add_label(doc, "Open with this", item.get("client_talking_point", ""))
+        doc.add_paragraph()
+
     # Footer note
     footer_p = doc.add_paragraph()
     footer_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
