@@ -16,19 +16,7 @@ ready-to-use talking points, concept explainers, and mock dialogues.
 | 4 | **Roadblocks & Solutions** | Current AI pain points + what the industry is doing |
 | 5 | **Mock Conversations** | Scripted dialogues — one with an executive, one with a data scientist |
 | 6 | **GitHub & Dev Standards** | Conventional Commits and other dev standards that matter in AI startups |
-
----
-
-## Sources crawled
-
-- Lenny's Newsletter (free articles)
-- Spill the GPTea (Substack)
-- Bridge by Adi Agrawal
-- Intuitive Autonomy (multi-agent systems)
-- Enterprise AI Executive
-- Tomorrow Toolbox — IMRL Course
-- Maven Rewind 2025
-- Conventional Commits Spec
+| 6 | **AI Governance & Strategy Frameworks** | 
 
 ---
 
