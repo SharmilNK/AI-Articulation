@@ -64,6 +64,68 @@ def _add_h1(doc: Document, text: str):
     _add_section_rule(doc)
 
 
+def _add_business_case(doc: Document, bc: dict):
+    if not bc:
+        return
+
+    # Scenario header
+    p = doc.add_paragraph()
+    p.paragraph_format.left_indent = Inches(0.3)
+    p.paragraph_format.space_before = Pt(6)
+    p.paragraph_format.space_after = Pt(3)
+    run = p.add_run("Business Case: ")
+    run.bold = True
+    run.font.size = Pt(10)
+    run.font.color.rgb = RGBColor(0x1A, 0x53, 0xA1)
+    scenario_run = p.add_run(bc.get("scenario", ""))
+    scenario_run.font.size = Pt(10)
+    scenario_run.italic = True
+
+    # Implementation layers
+    layers = bc.get("implementation_layers", [])
+    if layers:
+        lp = doc.add_paragraph()
+        lp.paragraph_format.left_indent = Inches(0.3)
+        lp.paragraph_format.space_after = Pt(2)
+        lp.add_run("Implementation layers:").bold = True
+        lp.runs[0].font.size = Pt(10)
+        for layer in layers:
+            name = layer.get("layer", "")
+            desc = layer.get("what_happens", "")
+            _add_bullet(doc, f"{name}: {desc}", indent_level=2)
+
+    # Risks
+    risks = bc.get("risks", [])
+    if risks:
+        rp = doc.add_paragraph()
+        rp.paragraph_format.left_indent = Inches(0.3)
+        rp.paragraph_format.space_after = Pt(2)
+        rp.paragraph_format.space_before = Pt(4)
+        rp.add_run("Risks, priority & mitigation:").bold = True
+        rp.runs[0].font.size = Pt(10)
+
+        PRIORITY_COLORS = {
+            "High": RGBColor(0xC0, 0x00, 0x00),
+            "Medium": RGBColor(0xFF, 0x7F, 0x00),
+            "Low": RGBColor(0x2E, 0x74, 0xB5),
+        }
+        for r in risks:
+            priority = r.get("priority", "Medium")
+            color = PRIORITY_COLORS.get(priority, PRIORITY_COLORS["Medium"])
+            rrow = doc.add_paragraph()
+            rrow.paragraph_format.left_indent = Inches(0.6)
+            rrow.paragraph_format.space_after = Pt(2)
+            priority_run = rrow.add_run(f"[{priority}] ")
+            priority_run.bold = True
+            priority_run.font.size = Pt(10)
+            priority_run.font.color.rgb = color
+            risk_run = rrow.add_run(f"{r.get('risk', '')} — ")
+            risk_run.font.size = Pt(10)
+            mit_run = rrow.add_run(r.get("mitigation", ""))
+            mit_run.font.size = Pt(10)
+            mit_run.italic = True
+
+
 def _add_h2(doc: Document, text: str):
     p = doc.add_paragraph()
     run = p.add_run(text)
@@ -144,7 +206,7 @@ def build_document(digest: dict, today_str: str) -> str:
     t_run.font.size = Pt(11)
     doc.add_paragraph()
 
-    # ── Section 1: Conversation Starters ──────────────────────────────────────
+    # ── Section 1: Conversation Starters ───────────────────────────────────────────
     _add_h1(doc, "1. Today's AI Conversation Starters")
     intro = doc.add_paragraph(
         "Use these to confidently open or redirect any discussion about AI."
@@ -164,7 +226,7 @@ def build_document(digest: dict, today_str: str) -> str:
         _add_label(doc, "Source", item.get("source", ""))
         doc.add_paragraph()
 
-    # ── Section 2: Recent Updates & Opinions ──────────────────────────────────
+    # ── Section 2: Recent Updates & Opinions ──────────────────────────────
     _add_h1(doc, "2. Recent AI Updates & Your Opinion")
     intro2 = doc.add_paragraph(
         "Stay current. Know what changed. Have a take ready."
@@ -179,7 +241,7 @@ def build_document(digest: dict, today_str: str) -> str:
         _add_label(doc, "Why it matters", item.get("why_it_matters", ""))
         doc.add_paragraph()
 
-    # ── Section 3: Core AI/ML Concepts ────────────────────────────────────────
+    # ── Section 3: Core AI/ML Concepts ──────────────────────────────────────
     _add_h1(doc, "3. Core AI/ML Concepts — Explained Simply")
     intro3 = doc.add_paragraph(
         "Master these and you'll command any room — boardroom or lab."
@@ -194,7 +256,7 @@ def build_document(digest: dict, today_str: str) -> str:
         _add_label(doc, "Why it's hot right now", item.get("why_relevant_now", ""))
         doc.add_paragraph()
 
-    # ── Section 4: AI Roadblocks & Solutions ──────────────────────────────────
+    # ── Section 4: AI Roadblocks & Solutions ───────────────────────────────
     _add_h1(doc, "4. AI Roadblocks & What the Industry Is Doing")
     intro4 = doc.add_paragraph(
         "Know the obstacles — and how smart teams are getting around them."
@@ -263,7 +325,7 @@ def build_document(digest: dict, today_str: str) -> str:
     _add_label(doc, "Smart thing to say", std.get("talking_point", ""))
     doc.add_paragraph()
 
-    # ── Section 7: AI Governance Frameworks ───────────────────────────────────
+    # ── Section 7: AI Governance Frameworks ────────────────────────────────────
     _add_h1(doc, "7. AI Governance Frameworks — Permanent Reference")
     intro7 = doc.add_paragraph(
         "The industry-standard frameworks your clients are already using or being asked about. "
@@ -285,6 +347,7 @@ def build_document(digest: dict, today_str: str) -> str:
             p.add_run(" · ".join(pillars)).font.size = Pt(10)
         _add_label(doc, "How companies use it", item.get("how_companies_use_it", ""))
         _add_label(doc, "Say this in a meeting", item.get("consultant_talking_point", ""))
+        _add_business_case(doc, item.get("business_case", {}))
         doc.add_paragraph()
 
     # ── Section 8: AI Strategy Frameworks ─────────────────────────────────────
@@ -310,6 +373,7 @@ def build_document(digest: dict, today_str: str) -> str:
             for step in checklist:
                 _add_bullet(doc, step)
         _add_label(doc, "Say this in a C-suite meeting", item.get("consultant_talking_point", ""))
+        _add_business_case(doc, item.get("business_case", {}))
         doc.add_paragraph()
 
     # ── Section 9: Enterprise AI Adoption Toolkit ─────────────────────────────
@@ -320,15 +384,6 @@ def build_document(digest: dict, today_str: str) -> str:
     )
     intro9.runs[0].font.size = Pt(10)
     intro9.runs[0].font.color.rgb = RGBColor(0x60, 0x60, 0x60)
-
-    TOPIC_ICONS = {
-        "AI Maturity Assessment": "Maturity Assessment",
-        "Roadmap Definition": "Roadmap Definition",
-        "Executive Advisory": "Executive Advisory",
-        "Business Case Development": "Business Case Development",
-        "Change Management": "Change Management",
-        "Enterprise AI Adoption": "Enterprise AI Adoption",
-    }
 
     for item in digest.get("enterprise_ai_toolkit", []):
         topic = item.get("topic", "")
@@ -347,6 +402,7 @@ def build_document(digest: dict, today_str: str) -> str:
                 _add_bullet(doc, step)
         _add_label(doc, "How you use this with a client", item.get("how_consultant_uses_it", ""))
         _add_label(doc, "Open with this", item.get("client_talking_point", ""))
+        _add_business_case(doc, item.get("business_case", {}))
         doc.add_paragraph()
 
     # Footer note
