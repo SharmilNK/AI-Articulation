@@ -58,8 +58,8 @@ SOURCES = [
         "category": "ai_trends",
     },
     {
-        "url": "https://spillthegptea.substack.com/",
-        "name": "Spill the GPTea",
+        "url": "https://www.aisnakeoil.com/",
+        "name": "AI Snake Oil",
         "category": "ai_news",
     },
     {
@@ -101,8 +101,8 @@ SOURCES = [
     },
     # ── Enterprise AI Adoption (permanent reference) ─────────────────────────
     {
-        "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights",
-        "name": "McKinsey QuantumBlack AI",
+        "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
+        "name": "McKinsey State of AI",
         "category": "ai_enterprise",
     },
     {
@@ -111,8 +111,8 @@ SOURCES = [
         "category": "ai_enterprise",
     },
     {
-        "url": "https://www.bcg.com/capabilities/digital-technology-data/artificial-intelligence",
-        "name": "BCG AI",
+        "url": "https://www.bcg.com/beyond-consulting/bcg-x",
+        "name": "BCG X — AI",
         "category": "ai_enterprise",
     },
     {
@@ -121,34 +121,34 @@ SOURCES = [
         "category": "ai_enterprise",
     },
     {
-        "url": "https://www.weforum.org/agenda/artificial-intelligence/",
-        "name": "World Economic Forum — AI",
+        "url": "https://www.weforum.org/stories/2024/01/future-of-jobs-2025-artificial-intelligence/",
+        "name": "World Economic Forum — AI Jobs Report",
         "category": "ai_enterprise",
     },
     {
-        "url": "https://www.gartner.com/en/articles/topic/artificial-intelligence",
-        "name": "Gartner AI Insights",
+        "url": "https://www.gartner.com/en/topics/generative-ai",
+        "name": "Gartner Generative AI",
         "category": "ai_enterprise",
     },
     # ── AI Maturity & Roadmap (specific free frameworks) ─────────────────────
     {
-        "url": "https://cloud.google.com/resources/ai-maturity",
-        "name": "Google Cloud AI Maturity Framework",
+        "url": "https://cloud.google.com/blog/topics/ai-machine-learning",
+        "name": "Google Cloud AI Blog",
         "category": "ai_maturity",
     },
     {
-        "url": "https://www.ibm.com/artificial-intelligence/ai-ladder",
-        "name": "IBM AI Ladder",
+        "url": "https://www.ibm.com/topics/artificial-intelligence",
+        "name": "IBM AI Topics",
         "category": "ai_maturity",
     },
     {
-        "url": "https://aws.amazon.com/executive-insights/content/how-to-create-an-ai-strategy/",
-        "name": "AWS AI Strategy & Roadmap Guide",
+        "url": "https://aws.amazon.com/ai/",
+        "name": "AWS AI",
         "category": "ai_maturity",
     },
     # ── Executive Advisory, Business Case, Change Management, Adoption ────────
     {
-        "url": "https://www.deloitte.com/us/en/pages/technology/solutions/ai-institute.html",
+        "url": "https://www2.deloitte.com/us/en/insights/topics/technology/ai-dossier.html",
         "name": "Deloitte AI Institute",
         "category": "ai_executive_advisory",
     },
@@ -158,7 +158,7 @@ SOURCES = [
         "category": "ai_business_case",
     },
     {
-        "url": "https://www.prosci.com/resources/articles/change-management-for-artificial-intelligence",
+        "url": "https://www.prosci.com/artificial-intelligence",
         "name": "Prosci AI Change Management",
         "category": "ai_change_management",
     },
@@ -168,8 +168,8 @@ SOURCES = [
         "category": "ai_enterprise_adoption",
     },
     {
-        "url": "https://www.microsoft.com/en-us/ai/ai-transformation",
-        "name": "Microsoft AI Transformation",
+        "url": "https://www.microsoft.com/en-us/ai",
+        "name": "Microsoft AI",
         "category": "ai_enterprise_adoption",
     },
 ]
