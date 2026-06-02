@@ -214,7 +214,7 @@ def generate_digest(scraped_pages: list) -> dict:
     }
     payload = {
         "model": CLAUDE_MODEL,
-        "max_tokens": 12000,
+        "max_tokens": 16000,
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],
     }
