@@ -119,7 +119,20 @@ Using the above source material, generate a JSON object with exactly these keys:
       "core_pillars": ["pillar 1", "pillar 2", "pillar 3"],
       "one_liner": "What this framework is in one sentence",
       "how_companies_use_it": "Concrete example of how real tech companies apply this",
-      "consultant_talking_point": "One sharp thing to say when this framework comes up in a meeting"
+      "consultant_talking_point": "One sharp thing to say when this framework comes up in a meeting",
+      "business_case": {{
+        "scenario": "A specific company type + business process or product (unique per framework, changes daily)",
+        "implementation_layers": [
+          {{"layer": "Layer name", "what_happens": "What this layer does in this scenario — 1 sentence"}},
+          {{"layer": "Layer name", "what_happens": "..."}},
+          {{"layer": "Layer name", "what_happens": "..."}}
+        ],
+        "risks": [
+          {{"risk": "Specific risk in this scenario", "priority": "High", "mitigation": "Concrete mitigation — 1 sentence"}},
+          {{"risk": "Another risk", "priority": "Medium", "mitigation": "..."}},
+          {{"risk": "Another risk", "priority": "Low", "mitigation": "..."}}
+        ]
+      }}
     }}
     // 3 items — one per governance source (Microsoft, Google, NIST)
   ],
@@ -131,7 +144,20 @@ Using the above source material, generate a JSON object with exactly these keys:
       "core_idea": "The central strategic concept in 1-2 sentences",
       "real_world_application": "How companies are deploying this strategy today",
       "deployment_checklist": ["step or consideration 1", "step or consideration 2", "step or consideration 3"],
-      "consultant_talking_point": "How to bring this up confidently in a C-suite strategy conversation"
+      "consultant_talking_point": "How to bring this up confidently in a C-suite strategy conversation",
+      "business_case": {{
+        "scenario": "A specific company type + business process or product (unique per framework, changes daily)",
+        "implementation_layers": [
+          {{"layer": "Layer name", "what_happens": "What this layer does in this scenario — 1 sentence"}},
+          {{"layer": "Layer name", "what_happens": "..."}},
+          {{"layer": "Layer name", "what_happens": "..."}}
+        ],
+        "risks": [
+          {{"risk": "Specific risk in this scenario", "priority": "High", "mitigation": "Concrete mitigation — 1 sentence"}},
+          {{"risk": "Another risk", "priority": "Medium", "mitigation": "..."}},
+          {{"risk": "Another risk", "priority": "Low", "mitigation": "..."}}
+        ]
+      }}
     }}
     // 3 items — one per strategy source (a16z, MIT Sloan, Stanford HAI)
   ],
@@ -144,7 +170,20 @@ Using the above source material, generate a JSON object with exactly these keys:
       "description": "What this framework covers and why it matters — 2 sentences max",
       "key_steps_or_levels": ["step/level 1", "step/level 2", "step/level 3"],
       "how_consultant_uses_it": "Exactly how a consultant deploys this with a client — be specific",
-      "client_talking_point": "The sentence that opens this topic in a client meeting"
+      "client_talking_point": "The sentence that opens this topic in a client meeting",
+      "business_case": {{
+        "scenario": "A specific company type + business process or product (unique per topic, changes daily)",
+        "implementation_layers": [
+          {{"layer": "Layer name", "what_happens": "What this layer does in this scenario — 1 sentence"}},
+          {{"layer": "Layer name", "what_happens": "..."}},
+          {{"layer": "Layer name", "what_happens": "..."}}
+        ],
+        "risks": [
+          {{"risk": "Specific risk in this scenario", "priority": "High", "mitigation": "Concrete mitigation — 1 sentence"}},
+          {{"risk": "Another risk", "priority": "Medium", "mitigation": "..."}},
+          {{"risk": "Another risk", "priority": "Low", "mitigation": "..."}}
+        ]
+      }}
     }}
     // 6 items — one per topic: Maturity Assessment, Roadmap Definition, Executive Advisory, Business Case, Change Management, Enterprise Adoption
   ]
@@ -156,6 +195,8 @@ Rules:
 - Mock conversations must feel realistic, not robotic
 - governance_frameworks, ai_strategy_frameworks, and enterprise_ai_toolkit are PERMANENT REFERENCE sections — summarise the actual frameworks, models, and methodologies, not just today's news
 - All other sections (conversation_starters, recent_updates_opinions, core_concepts, roadblocks_solutions, mock conversations, dev_standards_update) must reflect today {today}'s latest content
+- Every business_case must use a UNIQUE scenario (different industry / product each time) and must change daily
+- business_case risks must have priority labels: High / Medium / Low — list High risks first
 - Be concise — every field should be 1-2 sentences maximum to stay within token limits
 """
 
@@ -173,7 +214,7 @@ def generate_digest(scraped_pages: list) -> dict:
     }
     payload = {
         "model": CLAUDE_MODEL,
-        "max_tokens": 8192,
+        "max_tokens": 12000,
         "system": SYSTEM_PROMPT,
         "messages": [{"role": "user", "content": prompt}],
     }
