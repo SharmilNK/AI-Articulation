@@ -2,9 +2,9 @@ name: AI Articulation Daily Digest
 
 on:
   schedule:
-    # Runs at 07:00 UTC every day
+    # Runs Mon / Wed / Fri at 07:00 UTC
     # Convert to your timezone: 07:00 UTC = 03:00 ET / 00:00 PT
-    - cron: "0 7 * * *"
+    - cron: "0 7 * * 1,3,5"
   workflow_dispatch:
     # Allows manual trigger from GitHub Actions tab (useful for testing)
 
@@ -25,6 +25,15 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Set weekly cache key
+        run: echo "CACHE_WEEK=$(date +%Y-W%V)" >> $GITHUB_ENV
+
+      - name: Restore permanent sections cache
+        uses: actions/cache@v4
+        with:
+          path: output/permanent_cache.json
+          key: permanent-sections-${{ env.CACHE_WEEK }}
 
       - name: Run digest pipeline
         env:
