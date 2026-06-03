@@ -9,7 +9,8 @@ GMAIL_APP_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "").strip()
 RECIPIENT_EMAIL = os.getenv("RECIPIENT_EMAIL", "sharmilkn@gmail.com").strip()
 DIGEST_TIME = os.getenv("DIGEST_TIME", "07:00")
 
-CLAUDE_MODEL = "claude-sonnet-4-6"
+CLAUDE_MODEL = "claude-sonnet-4-6"        # permanent sections (8-10)
+CLAUDE_MODEL_HAIKU = "claude-haiku-4-5-20251001"  # daily sections (1-7)
 
 SOURCES = [
     {
